@@ -185,19 +185,29 @@ function renderResult(data) {
 
   body.innerHTML = html;
 
-  document.getElementById('btnAbrirRadar').addEventListener('click', () => {
+  document.getElementById('btnAbrirRadar').addEventListener('click', async () => {
     const RADAR_URL = 'https://claude.ai/artifact/8GW51hFdwbUTj5Q2ytEwgx';
     const textoCombinado = [data.title, data.description, data.price_detectado ? ('Precio detectado: ' + data.price_detectado) : '']
       .filter(Boolean).join('\n\n');
     const fotosTexto = imgs.length
       ? (imgs.length + ' imágenes detectadas en la página (revisar calidad manualmente).')
       : '';
-    const params = new URLSearchParams();
-    if (data.url) params.set('url', data.url);
-    if (textoCombinado) params.set('texto', textoCombinado);
-    if (fichaTexto) params.set('ficha', fichaTexto);
-    if (fotosTexto) params.set('fotos', fotosTexto);
-    window.open(RADAR_URL + '?' + params.toString(), '_blank');
+
+    const payload = [
+      '###RADAR_URL###', data.url || '',
+      '###RADAR_TEXTO###', textoCombinado || '',
+      '###RADAR_FICHA###', fichaTexto || '',
+      '###RADAR_FOTOS###', fotosTexto || '',
+      '###END###'
+    ].join('\n');
+
+    try {
+      await navigator.clipboard.writeText(payload);
+      setStatus('Datos copiados. Se abre Radar del Anuncio: pulsa allí "Pegar desde el Extractor".', 'ok');
+    } catch (e) {
+      setStatus('No se pudo copiar automáticamente; copia el resultado a mano.', 'warn');
+    }
+    window.open(RADAR_URL, '_blank');
   });
 }
 
