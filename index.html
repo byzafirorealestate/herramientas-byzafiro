@@ -3,28 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Extractor de Anuncio — ByZafiro</title>
+<title>Extractor de Anuncio — Paso 1 de 2 · Radar del Anuncio · ByZafiro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F5F6F8;
+    --bg: #F4F6FA;
     --bg-panel: #FFFFFF;
-    --bg-field: #EEF0F3;
-    --border: #D8DCE3;
-    --text: #14171C;
-    --text-dim: #5B6472;
-    --accent: #0E7C86;
-    --warn: #B4552C;
-    --ok: #2E7D5B;
-    --shadow: 0 1px 2px rgba(20,23,28,0.06);
+    --bg-field: #EEF1F7;
+    --border: #D9DEE9;
+    --text: #101828;
+    --text-dim: #5B6478;
+    --accent: #2B5AA0;
+    --accent-ink: #FFFFFF;
+    --navy: #16233F;
+    --warn: #A85C1E;
+    --ok: #216B4F;
+    --shadow: 0 1px 2px rgba(16,24,40,0.06);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0B1420; --bg-panel: #101D2E; --bg-field: #0C1826; --border: #223349;
-      --text: #E7ECF3; --text-dim: #8CA0B8; --accent: #4FD6DE;
-      --warn: #E8A87C; --ok: #7CD9AE; --shadow: 0 1px 2px rgba(0,0,0,0.35);
+      --bg: #080D18; --bg-panel: #0E1526; --bg-field: #0A1120; --border: #22304D;
+      --text: #E9EDF7; --text-dim: #8B96B4; --accent: #6E9FE8; --accent-ink: #071022;
+      --navy: #14213D;
+      --warn: #E3AA71; --ok: #74CBA3; --shadow: 0 4px 16px rgba(0,0,0,0.45);
     }
   }
   * { box-sizing: border-box; }
@@ -43,7 +46,7 @@
   .row { display: flex; gap: 8px; }
   .row input { flex: 1; }
   button { font-family: inherit; font-size: 0.9rem; font-weight: 600; border-radius: 7px; padding: 10px 16px; border: 1px solid transparent; cursor: pointer; white-space: nowrap; }
-  button.primary { background: var(--accent); color: #04161A; }
+  button.primary { background: var(--accent); color: var(--accent-ink); }
   button.primary:disabled { opacity: 0.55; cursor: default; }
   button.ghost { background: transparent; border-color: var(--border); color: var(--text-dim); }
   button.ghost:hover { color: var(--text); border-color: var(--accent); }
@@ -62,9 +65,30 @@
 <div class="wrap">
 
   <header class="page-head">
-    <h1>Extractor de Anuncio</h1>
-    <p>Pega un enlace y saca el texto, precio e imagenes listos para copiar.</p>
+    <h1>Extractor de Anuncio <span style="font-weight:400; color:var(--text-dim); font-size:0.85rem;">— Paso 1 de 2</span></h1>
+    <p>Pega un enlace y saca el texto, precio e imagenes listos para copiar. Es la primera mitad del dúo con <strong>Radar del Anuncio</strong>, que hace el análisis y el diagnóstico.</p>
   </header>
+
+  <div class="panel">
+    <details>
+      <summary style="font-size:0.85rem; font-weight:600; color:var(--text);">¿Qué es esto y cómo se usa? (instrucciones)</summary>
+      <div style="margin-top:14px; font-size:0.88rem; color:var(--text-dim); line-height:1.6;">
+        <p style="margin:0 0 10px;"><strong style="color:var(--text);">Qué hace esta herramienta:</strong> a partir del enlace de un anuncio (Idealista, Fotocasa, etc.), lee automáticamente y de forma pública el título, la descripción, el precio, la ficha técnica y las fotos. No inventa nada: solo copia lo que ya está publicado en la página.</p>
+        <p style="margin:0 0 10px;"><strong style="color:var(--text);">Para qué sirve:</strong> es el <em>primer</em> paso de dos. El segundo paso, "Radar del Anuncio", coge estos datos y genera el diagnóstico (clasificación A/B/C, puntos fuertes y débiles, preguntas para el propietario, resumen ejecutivo exportable a PDF).</p>
+        <p style="margin:0 0 6px;"><strong style="color:var(--text);">Cómo usarlo, paso a paso:</strong></p>
+        <ol style="margin:0 0 10px; padding-left:20px;">
+          <li>Pega aquí arriba el enlace del anuncio.</li>
+          <li>Pulsa «Extraer» y espera unos segundos.</li>
+          <li>Revisa abajo el título, la descripción, la ficha técnica, el precio y las fotos detectadas.</li>
+          <li>Pulsa «Abrir en Radar del Anuncio →». Se abre una pestaña nueva con la segunda herramienta y se copian los datos automáticamente.</li>
+          <li>En esa pestaña nueva, haz clic dentro del primer recuadro (el que dice "Pegar aquí lo copiado del Extractor") y pulsa <strong>Ctrl+V</strong> (o Cmd+V en Mac). Los campos se rellenan solos.</li>
+          <li>Añade a mano, si las tienes, las estadísticas de contacto y algún comparable conocido — eso nunca se puede extraer automáticamente.</li>
+          <li>Pulsa «Analizar anuncio» para obtener el diagnóstico completo, y «Exportar informe a PDF» si quieres guardarlo.</li>
+        </ol>
+        <p style="margin:0;"><strong style="color:var(--text);">Para usarlo en otro ordenador:</strong> esta página (Extractor) está publicada en GitHub Pages y funciona en cualquier navegador, sin instalar nada ni iniciar sesión — solo guarda esta dirección en favoritos. «Radar del Anuncio» es un artefacto de claude.ai: para usarlo hace falta abrir su enlace estando conectado con la cuenta de ByZafiro en claude.ai.</p>
+      </div>
+    </details>
+  </div>
 
   <div class="panel">
     <h2>Enlace</h2>
@@ -90,7 +114,7 @@
     <div id="resultBody" style="display:none;"></div>
   </div>
 
-  <footer class="foot">Extractor de Anuncio · ByZafiro Real Estate</footer>
+  <footer class="foot">Extractor de Anuncio · ByZafiro Real Estate · v1.0 — Paso 1 de Radar del Anuncio</footer>
 </div>
 
 <script>
@@ -203,7 +227,7 @@ function renderResult(data) {
 
     try {
       await navigator.clipboard.writeText(payload);
-      setStatus('Datos copiados. Se abre Radar del Anuncio: pulsa allí "Pegar desde el Extractor".', 'ok');
+      setStatus('Datos copiados. En la pestaña de Radar del Anuncio, haz clic en el primer recuadro y pulsa Ctrl+V para pegarlos.', 'ok');
     } catch (e) {
       setStatus('No se pudo copiar automáticamente; copia el resultado a mano.', 'warn');
     }
